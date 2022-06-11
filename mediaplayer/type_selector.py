@@ -13,7 +13,7 @@ class Selector:
 
         print(ascii_image)
 
-        with open("examples/ascii_image2.txt", "w") as f:
+        with open("ascii_image.txt", "w") as f:
             f.write(ascii_image)
     
     def image_ascii_color():
