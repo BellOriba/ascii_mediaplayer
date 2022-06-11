@@ -1,10 +1,13 @@
 from PIL import Image
 from ascii_image import ImageGenerator
 from image_processor import Processor
+import os
 
 class Selector:
 
-    def image_ascii(path, new_width=200):
+    columns, lines = os.get_terminal_size()
+
+    def image_ascii(path, new_width=columns):
         image = Processor.getImage(path)
         new_image = ImageGenerator.convertToAscii(Processor.convertPixelToGray(Processor.resizeImage(image, new_width)))
 
@@ -13,8 +16,8 @@ class Selector:
 
         print(ascii_image)
 
-        with open("ascii_image.txt", "w") as f:
-            f.write(ascii_image)
+        #with open("ascii_image.txt", "w") as f:
+        #    f.write(ascii_image)
     
     def image_ascii_color():
         pass

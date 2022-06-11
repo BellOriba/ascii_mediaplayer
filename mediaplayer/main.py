@@ -12,7 +12,7 @@ def main():
 
     Type the value here: """)
     if user_input == "0":
-        Selector.image_ascii("./example/path.png")
+        Selector.image_ascii("./img_test/juliusCaesar.png")
     else:
         print("Not yet implemented.")
 

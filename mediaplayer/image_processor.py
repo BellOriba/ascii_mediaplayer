@@ -23,7 +23,7 @@ class Processor:
         return gray_img
 
     # Not already implemented
-    def getPixelsColors(image, rows=None, collums=None, with_coordinates=0):
+    def getPixelsColors(image, rows=None, columns=None, with_coordinates=0):
         """
         return a list of tuples with the coordinate and other tuple with the RGBA values of each pixel [(int x, int y, (int r, int g, int b, int a))]
 
@@ -36,17 +36,17 @@ class Processor:
         else:
             rows = int(rows)
 
-        if collums is None or collums == "":
-            collums = image.height
+        if columns is None or columns == "":
+            columns = image.height
         else:
-            collums = int(collums)
+            columns = int(columns)
 
         all_colors = []
 
         if with_coordinates == 0:
-            all_colors = [image.getpixel((i, j)) for j in range(0, collums) for i in range(0, rows)]
+            all_colors = [image.getpixel((i, j)) for j in range(0, columns) for i in range(0, rows)]
         else:
-            all_colors = [(i, j, image.getpixel((i, j))) for j in range(0, collums) for i in range(0, rows)]
+            all_colors = [(i, j, image.getpixel((i, j))) for j in range(0, columns) for i in range(0, rows)]
 
         return all_colors
 
