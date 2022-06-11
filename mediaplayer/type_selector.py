@@ -4,8 +4,8 @@ from image_processor import Processor
 
 class Selector:
 
-    def image_ascii(new_width=200):
-        image = Processor.getImage("./img_test/juliusCaesar.png")
+    def image_ascii(path, new_width=200):
+        image = Processor.getImage(path)
         new_image = ImageGenerator.convertToAscii(Processor.convertPixelToGray(Processor.resizeImage(image, new_width)))
 
         pixel_count = len(new_image)
@@ -13,7 +13,7 @@ class Selector:
 
         print(ascii_image)
 
-        with open("ascii_image.txt", "w") as f:
+        with open("examples/ascii_image2.txt", "w") as f:
             f.write(ascii_image)
     
     def image_ascii_color():

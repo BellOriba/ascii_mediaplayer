@@ -13,6 +13,9 @@ class ImageGenerator:
         characters = "".join([CHAR_LIST_CHARS[pixel//25] for pixel in all_pixels])
         return characters
 
+    def convertToAsciiColor():
+        pass
+
 def main() -> None:
     print("Running ascii_image.py directly")
 
