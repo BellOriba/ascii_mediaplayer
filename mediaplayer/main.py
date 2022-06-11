@@ -1,7 +1,19 @@
-from PIL import Image
-import ascii_image
-from image_processor import Processor
+from type_selector import Selector
 
-image = Processor.getImage("./img_test/Adamastor.png")
-Processor.getPixelsColors(image, input("Enter the number of rows: "), input("Enter the number of collums: "))
 print("Executando main.py")
+
+def main():
+    print("Enter the type of converter you will use:")
+    user_input = input("""
+    Image Converter (B&W) : 0
+    Image Converter (Color) : 1
+    Video Converter (B&W) : 2
+    Video Converter (Color) : 3
+
+    Type the value here: """)
+    if user_input == "0":
+        Selector.image_ascii()
+    else:
+        print("Not yet implemented.")
+
+main()

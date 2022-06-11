@@ -3,8 +3,26 @@ from PIL import Image
 class Processor:
 
     def getImage(image_path):
+        """
+        create a PIL.Image Object
+        """
         return Image.open(image_path)
 
+    def resizeImage(image, new_width=200):
+        width, height = image.size
+        ratio = height / width / 1.65
+        new_height = int(new_width * ratio)
+        resized_image = image.resize((new_width, new_height))
+        return resized_image
+
+    def convertPixelToGray(image):
+        """
+        convert each pixel to grayscale
+        """
+        gray_img = image.convert("L")
+        return gray_img
+
+    # Not already implemented
     def getPixelsColors(image, rows=None, collums=None, with_coordinates=0):
         """
         return a list of tuples with the coordinate and other tuple with the RGBA values of each pixel [(int x, int y, (int r, int g, int b, int a))]
@@ -31,24 +49,6 @@ class Processor:
             all_colors = [(i, j, image.getpixel((i, j))) for j in range(0, collums) for i in range(0, rows)]
 
         return all_colors
-    
-    ## All PIL.Image attributes
-    """
-    filename = {}
-    format = {}
-    mode = {}
-    size = {}
-    width = {}
-    height = {}
-    palette = {}
-    info = {}
-    is_animated = {}
-    n_frames = {}
-
-    for i in range(0, rows):
-                for j in range(0, collums):
-                    all_colors.append(image.getpixel((i, j)))
-    """
 
 def main() -> None:
     print("Executando image_processor.py diretamente")
