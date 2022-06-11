@@ -3,6 +3,7 @@ from type_selector import Selector
 print("Executando main.py")
 
 def main():
+    print("If the image is rendered with blank lines between the characters, remove the '\\n' from the function image_ascii in the type_selector.py")
     print("Enter the type of converter you will use:")
     user_input = input("""
     Image Converter (B&W) : 0
@@ -12,7 +13,7 @@ def main():
 
     Type the value here: """)
     if user_input == "0":
-        Selector.image_ascii("./img_test/juliusCaesar.png")
+        Selector.image_ascii("./path/example.png")
     else:
         print("Not yet implemented.")
 

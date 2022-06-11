@@ -8,7 +8,7 @@ class Processor:
         """
         return Image.open(image_path)
 
-    def resizeImage(image, new_width=200):
+    def resizeImage(image, new_width=120):
         width, height = image.size
         ratio = height / width / 1.65
         new_height = int(new_width * ratio)
