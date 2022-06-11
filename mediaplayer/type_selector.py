@@ -14,7 +14,7 @@ class Selector:
         ascii_image = "\n".join([new_image[i:(i+new_width)] for i in range(0, pixel_count, new_width)])
         print(ascii_image)
 
-        with open("./path/example.txt", "w") as f:
+        with open("./examples/ascii_image2.txt", "w") as f:
             f.write(ascii_image)
     
     def image_ascii_color():
