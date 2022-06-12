@@ -9,13 +9,14 @@ class Selector:
 
     def image_ascii(path, new_width=columns):
         image = Processor.getImage(path)
+
         new_image = ImageGenerator.convertToAscii(Processor.convertPixelToGray(Processor.resizeImage(image, new_width)))
         pixel_count = len(new_image)
         ascii_image = "\n".join([new_image[i:(i+new_width)] for i in range(0, pixel_count, new_width)])
         print(ascii_image)
 
-        with open("./examples/ascii_image2.txt", "w") as f:
-            f.write(ascii_image)
+        #with open("./examples/example.txt", "w") as f:
+        #    f.write(ascii_image)
     
     def image_ascii_color():
         pass
