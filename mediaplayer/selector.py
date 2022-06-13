@@ -16,9 +16,6 @@ class Selector:
         sys.stdout.write(ascii_image)
         return ascii_image
 
-    def imageAsciiColor():
-        pass
-
     def video_ascii(path, new_width=columns-1):
         cap = cv2.VideoCapture(path)
         while True:
@@ -27,9 +24,6 @@ class Selector:
             image_frame = Image.fromarray(frame)
             Generator.generateNewFrame(image_frame, new_width)
             cv2.waitKey(1)
-
-    def video_ascii_color():
-        pass
 
 def main() -> None:
     print("Running selector.py directly")

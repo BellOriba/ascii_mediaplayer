@@ -9,9 +9,12 @@ def main():
     Image Converter (Color) : 1
     Video/GIF Converter (B&W) : 2
     Video/GIF Converter (Color) : 3""")
+
     type_input = input("\nType the value here: ")
     width_input = input("\nType the width of the image/video: ")
     path_input = input("\nInsert the path to the file: ")
+    path_input = "./img_test/juliusCaesar.png" # for tests purposes
+
     if width_input == "":
         columns, rows = os.get_terminal_size()
         width_input = columns-1
