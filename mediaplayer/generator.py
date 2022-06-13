@@ -1,5 +1,7 @@
 from processor import Processor
 import sys, os
+from PIL import Image, ImageDraw, ImageFont
+from io import BytesIO
 
 CHAR_LIST_BLOCKS = ['░', '▒', '▓', '█'] # Not already implemented
 CHAR_LIST = ['@', '#', 'S', "%", "?", "*", "+", ";", ":", ",", "."]
@@ -39,13 +41,21 @@ class Generator:
         with open(path, "w") as f:
             f.write(image)
 
-    def saveInImage(image):
+    def saveInImage(image_ascii, path, width_input):
         """
         return None.
         
         Save the ASCII art in a png file.
         """
-        pass
+        with Image.open(path).convert("RGBA") as base:
+            new_base = Processor.resizeImage(base, width_input)
+            width, height = new_base.size
+            canvas = Image.new("RGBA", (width*9, height*16), (0, 0, 0, 255))
+            fnt = ImageFont.truetype("C:\\Windows\\Fonts\\lucon.ttf", 15)
+            d = ImageDraw.Draw(canvas)
+            d.text((0, 0), image_ascii, font=fnt, fill=(255, 255, 255, 255))
+            canvas.save("./path/example.png")
+
 
 def main() -> None:
     print("Running generator.py directly")

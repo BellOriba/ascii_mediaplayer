@@ -13,7 +13,6 @@ def main():
     type_input = input("\nType the value here: ")
     width_input = input("\nType the width of the image/video: ")
     path_input = input("\nInsert the path to the file: ")
-    path_input = "./img_test/juliusCaesar.png" # for tests purposes
 
     if width_input == "":
         columns, rows = os.get_terminal_size()
@@ -25,10 +24,14 @@ def main():
         image = Selector.video_ascii(path_input, int(width_input))
     else:
         print("Not yet implemented.")
+
     if type_input == "0" or type_input == "1":
-        save_input = input("\nWant to save your image to a txt file? [Y]/[n] ")
-        if save_input == "Y":
-            Generator.saveInText(image, "./examples/example.txt")
+        save_input1 = input("\nDo you want to save your image in a txt file? [y]/[n] ")
+        save_input2 = input("\nDo you want to save your image in a png file? [y]/[n] ")
+        if save_input1 == "y":
+            Generator.saveInText(image, "./path/example.txt")
+        if save_input2 == "y":
+            Generator.saveInImage(image, path_input, width_input)
 
 print("Executando main.py")
 main()
