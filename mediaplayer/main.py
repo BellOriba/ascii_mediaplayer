@@ -29,9 +29,11 @@ def main():
         save_input1 = input("\nDo you want to save your image in a txt file? [y]/[n] ")
         save_input2 = input("\nDo you want to save your image in a png file? [y]/[n] ")
         if save_input1 == "y":
-            Generator.saveInText(image, "./path/example.txt")
+            save_path = input("\nEnter the path where you want to save your file: ")
+            Generator.saveInText(image, save_path)
         if save_input2 == "y":
-            Generator.saveInImage(image, path_input, width_input)
+            save_path = input("\nEnter the path where you want to save your file: ")
+            Generator.saveInImage(image, path_input, int(width_input), save_path)
 
 print("Executando main.py")
 main()

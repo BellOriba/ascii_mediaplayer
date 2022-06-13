@@ -41,20 +41,22 @@ class Generator:
         with open(path, "w") as f:
             f.write(image)
 
-    def saveInImage(image_ascii, path, width_input):
+    def saveInImage(image_ascii, path, width_input, save_path):
         """
         return None.
         
         Save the ASCII art in a png file.
         """
         with Image.open(path).convert("RGBA") as base:
+            black = (0, 0, 0, 255)
+            white = (255, 255, 255, 255)
             new_base = Processor.resizeImage(base, width_input)
             width, height = new_base.size
-            canvas = Image.new("RGBA", (width*9, height*16), (0, 0, 0, 255))
+            canvas = Image.new("RGBA", (width*9, height*16), white)
             fnt = ImageFont.truetype("C:\\Windows\\Fonts\\lucon.ttf", 15)
             d = ImageDraw.Draw(canvas)
-            d.text((0, 0), image_ascii, font=fnt, fill=(255, 255, 255, 255))
-            canvas.save("./path/example.png")
+            d.text((0, 0), image_ascii, font=fnt, fill=black)
+            canvas.save(save_path)
 
 
 def main() -> None:
