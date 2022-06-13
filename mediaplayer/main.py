@@ -1,22 +1,30 @@
 from generator import Generator
 from selector import Selector
-
+import os
 def main():
     print("If the image is rendered with blank lines between the characters, remove the '\\n' from the function image_ascii in the type_selector.py")
     print("Enter the type of converter you will use:")
-    user_input = input("""
+    print("""
     Image Converter (B&W) : 0
     Image Converter (Color) : 1
     Video Converter (B&W) : 2
-    Video Converter (Color) : 3
+    Video Converter (Color) : 3""")
+    type_input = input("\nType the value here: ")
+    width_input = input("\nType the width of the image/video: ")
+    if width_input == "":
+        columns, rows = os.get_terminal_size()
+        width_input = columns-1
 
-    Type the value here: """)
-    if user_input == "0":
-        image = Selector.image_ascii("./path/example.png")
-        print(image)
-        Generator.saveInText(image, "./path/example.txt")
+    if type_input == "0":
+        image = Selector.imageAscii("./path/example.png", int(width_input))
+    elif type_input == "2":
+        image = Selector.video_ascii("./path/example.mp4", int(width_input))
     else:
         print("Not yet implemented.")
+    if type_input == "0" or type_input == "1":
+        save_input = input("\nWant to save your image to a txt file? [Y]/[n] ")
+        if save_input == "Y":
+            Generator.saveInText(image, "./examples/example.txt")
 
 print("Executando main.py")
 main()

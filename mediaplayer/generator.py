@@ -1,7 +1,8 @@
 from processor import Processor
+import sys, os
 
 CHAR_LIST_BLOCKS = ['░', '▒', '▓', '█'] # Not already implemented
-CHAR_LIST = ['@', '#', '&', "$", "%", "?", "*", "+", ";", ":", ",", "."]
+CHAR_LIST = ['@', '#', 'S', "%", "?", "*", "+", ";", ":", ",", "."]
 
 class Generator:
 
@@ -13,13 +14,21 @@ class Generator:
         return characters
 
     def generateAscii(image, new_width):
+        """
+        Generate the ASCII image.
+        """
         new_image = Generator.__convertToAscii(Processor.getPixelsColors(Processor.convertImageToGray(Processor.resizeImage(image, new_width))))
         pixel_count = len(new_image)
         ascii_image = "\n".join([new_image[i:(i+new_width)] for i in range(0, pixel_count, new_width)])
         return ascii_image
 
-    def convertToAsciiColor():
-        pass
+    def generateNewFrame(image_frame, new_width):
+        new_image = Generator.__convertToAscii(Processor.getPixelsColors(Processor.convertImageToGray(Processor.resizeImage(image_frame, new_width))))
+        pixel_count = len(new_image)
+        ascii_image = "\n".join([new_image[i:(i+new_width)] for i in range(0, pixel_count, new_width)])
+
+        sys.stdout.write(ascii_image)
+        os.system('cls' if os.name == 'nt' else 'clear')
 
     def saveInText(image, path):
         """
