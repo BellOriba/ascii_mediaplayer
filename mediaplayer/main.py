@@ -7,18 +7,19 @@ def main():
     print("""
     Image Converter (B&W) : 0
     Image Converter (Color) : 1
-    Video Converter (B&W) : 2
-    Video Converter (Color) : 3""")
+    Video/GIF Converter (B&W) : 2
+    Video/GIF Converter (Color) : 3""")
     type_input = input("\nType the value here: ")
     width_input = input("\nType the width of the image/video: ")
+    path_input = input("\nInsert the path to the file: ")
     if width_input == "":
         columns, rows = os.get_terminal_size()
         width_input = columns-1
 
     if type_input == "0":
-        image = Selector.imageAscii("./path/example.png", int(width_input))
+        image = Selector.imageAscii(path_input, int(width_input))
     elif type_input == "2":
-        image = Selector.video_ascii("./path/example.mp4", int(width_input))
+        image = Selector.video_ascii(path_input, int(width_input))
     else:
         print("Not yet implemented.")
     if type_input == "0" or type_input == "1":
