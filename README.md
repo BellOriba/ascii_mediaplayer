@@ -7,5 +7,6 @@
 - [X] Add Video converter to ASCII.
 - [X] Add GIF converter to ASCII.
 - [ ] Convert videos through youtube links.
+- [ ] Add sound to the video player.
 - [ ] Add color to the image converter. (Only Linux)
 - [ ] Add color to the video/gif converters. (Only Linux)
