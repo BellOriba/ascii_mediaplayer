@@ -6,7 +6,8 @@
 - [X] Been able to adapt image/frame width.
 - [X] Add Video converter to ASCII.
 - [X] Add GIF converter to ASCII.
-- [ ] Convert videos through youtube links.
+- [X] Convert images through urls.
+- [X] Convert videos through youtube links.
 - [ ] Add sound to the video player.
-- [ ] Add color to the image converter. (Only Linux)
-- [ ] Add color to the video/gif converters. (Only Linux)
+- [ ] Add color to the image converter. (Linux Only)
+- [ ] Add color to the video/gif converters. (Linux Only)

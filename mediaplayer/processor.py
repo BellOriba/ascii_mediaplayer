@@ -1,4 +1,6 @@
 from PIL import Image
+from pytube import YouTube
+import os
 
 class Processor:
 
@@ -7,6 +9,9 @@ class Processor:
         create a PIL.Image Object
         """
         return Image.open(image_path)
+
+    def getVideo(video_path):
+        return YouTube(video_path)
 
     def resizeImage(image, new_width):
         width, height = image.size
@@ -29,6 +34,9 @@ class Processor:
         pix_colors = image.getdata()
         return pix_colors
 
+    def deleteFile(path):
+        os.remove(path)
+        
 def main() -> None:
     print("Running processor.py directly")
 

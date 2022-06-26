@@ -20,10 +20,13 @@ class Selector:
         cap = cv2.VideoCapture(path)
         while True:
             ret, frame = cap.read()
-            cv2.imshow("frame", frame)
-            image_frame = Image.fromarray(frame)
-            Generator.generateNewFrame(image_frame, new_width)
-            cv2.waitKey(1)
+            while ret:
+                cv2.imshow("frame", frame)
+                image_frame = Image.fromarray(frame)
+                Generator.generateNewFrame(image_frame, new_width)
+                cv2.waitKey(1)
+                ret, frame = cap.read()
+            break
 
 def main() -> None:
     print("Running selector.py directly")

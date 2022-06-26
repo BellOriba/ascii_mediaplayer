@@ -1,39 +1,47 @@
 from generator import Generator
 from selector import Selector
+from downloader import Downloader
+from processor import Processor
 import os
-def main():
-    print("If the image is rendered with blank lines between the characters, remove the '\\n' from the function image_ascii in the type_selector.py")
-    print("Enter the type of converter you will use:")
-    print("""
-    Image Converter (B&W) : 0
-    Image Converter (Color) : 1
-    Video/GIF Converter (B&W) : 2
-    Video/GIF Converter (Color) : 3""")
 
-    type_input = input("\nType the value here: ")
-    width_input = input("\nType the width of the image/video: ")
-    path_input = input("\nInsert the path to the file: ")
+columns, rows = os.get_terminal_size()
 
-    if width_input == "":
-        columns, rows = os.get_terminal_size()
-        width_input = columns-1
+def img_local(path_input, width_input=columns):
+    image = Selector.imageAscii(path_input, int(width_input))
+    return image
 
-    if type_input == "0":
-        image = Selector.imageAscii(path_input, int(width_input))
-    elif type_input == "2":
-        image = Selector.video_ascii(path_input, int(width_input))
-    else:
-        print("Not yet implemented.")
+def img_online(link_input, save_path, file_name, width_input=columns):
+    Downloader.download_image(link_input, save_path, file_name)
+    image = Selector.imageAscii(save_path+file_name, int(width_input))
+    os.remove(save_path+file_name)
+    return image
 
-    if type_input == "0" or type_input == "1":
-        save_input1 = input("\nDo you want to save your image in a txt file? [y]/[n] ")
-        save_input2 = input("\nDo you want to save your image in a png file? [y]/[n] ")
-        if save_input1 == "y":
-            save_path = input("\nEnter the path where you want to save your file: ")
-            Generator.saveInText(image, save_path)
-        if save_input2 == "y":
-            save_path = input("\nEnter the path where you want to save your file: ")
-            Generator.saveInImage(image, path_input, int(width_input), save_path)
+def video_gif_local(path_input, width_input=columns):
+    Selector.video_ascii(path_input, int(width_input))
+
+def video_online(link_input, save_path, file_name, width_input=columns):
+    Downloader.download_yt_video(link_input, save_path, file_name)
+    Selector.video_ascii(save_path + file_name, int(width_input))
+    os.remove(save_path + file_name)
+
+def video_thumb_online(yt_link, save_path, file_name, width_input=columns, delete=0):
+    Downloader.download_image(Downloader.get_yt_thumb(yt_link), save_path, file_name)
+    image = Selector.imageAscii(save_path + file_name, int(width_input))
+    if delete == 0:
+        os.remove(save_path + file_name)
+    return image
+
+def gif_online(link_input, save_path, file_name, width_input=columns):
+    Downloader.download_image(link_input, save_path, file_name)
+    Selector.video_ascii(save_path + file_name, 100)
+    os.remove(save_path + file_name)
+
+def save_img_text(image, save_path):
+    Generator.saveInText(image, save_path)
+
+def save_img_image(image, path_input, width_input, save_path):
+    Generator.saveInImage(image, path_input, int(width_input), save_path)
+
+#######################################################################
 
 print("Executando main.py")
-main()
