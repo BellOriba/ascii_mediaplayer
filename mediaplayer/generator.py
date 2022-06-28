@@ -3,7 +3,6 @@ import sys, os
 from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 
-CHAR_LIST_BLOCKS = ['░', '▒', '▓', '█'] # Not already implemented
 CHAR_LIST = ['@', '#', 'S', "%", "?", "*", "+", ";", ":", ",", "."]
 
 class Generator:
@@ -57,7 +56,6 @@ class Generator:
             d = ImageDraw.Draw(canvas)
             d.text((0, 0), image_ascii, font=fnt, fill=black)
             canvas.save(save_path)
-
 
 def main() -> None:
     print("Running generator.py directly")

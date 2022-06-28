@@ -26,7 +26,6 @@ class Downloader:
                 handle.write(block)
 
 def main() -> None:
-    Downloader.download_image("https://criticalhits.com.br/wp-content/uploads/2021/07/konosuba-megumin-random-pn-n.jpg", "./img_test/", "test.png")
     print("Running downloader.py directly")
 
 if __name__ == "__main__":
