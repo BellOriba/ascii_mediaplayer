@@ -31,8 +31,8 @@ Optional: `-w [output width]`
 Optional: `-w [output width]`
 
 ### Save ASCII
-**Save a ASCII image as txt**  
-Works for local and online images  
+**Save a ASCII image as txt**
+(Works for local and online images)  
 `py main.py -p [file path] -l -i -txt`  
 Optional commands:  
 - `-w [output width]` -> Width of the output image (default: console width)  
@@ -40,7 +40,7 @@ Optional commands:
 - `-fn [filename]` -> To choose a file name (default: ascii+[random number])
 
 **Save a ASCII image as png**
-Works only for local images  
+(Works only for local images)  
 `py main.py -p [file path] -l -i -png`  
 Optional commands:  
 - `-w [output width]` -> Width of the output image (default: console width)  
