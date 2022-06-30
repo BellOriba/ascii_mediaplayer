@@ -44,8 +44,8 @@ class Selector:
 
     def video_online(link_input, save_path, file_name, width_input=columns):
         Downloader.download_yt_video(link_input, save_path, file_name)
-        Selector.video_ascii(save_path + file_name, int(width_input))
-        os.remove(save_path + file_name)
+        Selector.video_ascii((save_path + file_name), width_input)
+        os.remove(save_path + "\\" + file_name)
 
     def video_thumb_online(yt_link, save_path, file_name, width_input=columns, delete=0):
         Downloader.download_image(Downloader.get_yt_thumb(yt_link), save_path, file_name)

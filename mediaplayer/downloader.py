@@ -1,11 +1,24 @@
 import requests
 from processor import Processor
+import re
 
 class Downloader:
+
+    def get_stream_video_itag(video_ob):
+        streams = [str(video_ob.streams[i]) for i in range(len(video_ob.streams)-1)]
+        regex = '<Stream: itag="\d{2,3}" mime_type="video/webm" res="1080p" fps="\d{1,2}fps" vcodec="[a-zA-Z0-9_.]+" progressive="False" type="video">'
+        for stream in streams:
+            match = re.search(regex, stream)
+            if match != None:
+                right_stream = match
+                continue
+        stream_itag = re.findall('itag="(\d{1,3})"', str(right_stream))
+        return stream_itag
     
     def download_yt_video(path, output_path, file_name):
         video_ob = Processor.getVideo(path)
-        yt_stream = video_ob.streams.get_by_itag(248)
+        itag = Downloader.get_stream_video_itag(video_ob)
+        yt_stream = video_ob.streams.get_by_itag(itag[0])
         yt_stream.download(output_path, file_name)
     
     def get_yt_thumb(path):
