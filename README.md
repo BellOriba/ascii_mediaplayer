@@ -1,3 +1,5 @@
+![ASCII Mediaplayer Banner](/docs/banner_ding.png)
+
 # ASCII Mediaplayer
 ![Python Versions](https://img.shields.io/pypi/pyversions/django?logo=python&logoColor=white&style=for-the-badge)
 
