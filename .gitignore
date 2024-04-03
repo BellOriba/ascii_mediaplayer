@@ -1,6 +1,6 @@
 img_test/
 examples/out/
-
+.vscode/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
